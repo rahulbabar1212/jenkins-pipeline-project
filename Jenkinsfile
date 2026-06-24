@@ -24,7 +24,7 @@ pipeline {
             }
         }
 
-stage('Deploy') {
+        stage('Deploy') {
             steps {
                 sshagent(credentials: ['ec2-target-server-key']) {
                     sh """
@@ -35,7 +35,8 @@ stage('Deploy') {
                         sudo systemctl restart httpd
                     '
                     """
-                }
-            }
-        }
-}
+                } // 1. Closes sshagent
+            } // 2. Closes steps
+        } // 3. Closes stage('Deploy')
+    } // 4. Closes stages
+} // 5. Closes pipeline
