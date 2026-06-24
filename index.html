@@ -1,1 +1,200 @@
-<h1>Hello from Jenkins CI/CD</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Dark Parallax</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  width: 100%;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+nav h1 {
+  color: #00fff7;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #00fff7;
+}
+
+/* PARALLAX */
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  transform: translateY(0);
+}
+
+/* DARK OVERLAY */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+}
+
+/* CONTENT */
+.content {
+  z-index: 2;
+  max-width: 700px;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+p {
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  background: #00fff7;
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background: #00cfc9;
+}
+
+/* GLASS CARD */
+.card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #050505;
+  color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h1>DarkUI</h1>
+  <div>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+<!-- SECTION 1 -->
+<section class="section">
+  <div class="bg" style="background-image: url('https://picsum.photos/1920/1080?random=1')"></div>
+  <div class="overlay"></div>
+  <div class="content">
+    <h1>Modern UI Design</h1>
+    <p>Black theme with smooth parallax animations</p>
+    <button>Explore</button>
+  </div>
+</section>
+
+<!-- SECTION 2 -->
+<section class="section">
+  <div class="bg" style="background-image: url('https://picsum.photos/1920/1080?random=2')"></div>
+  <div class="overlay"></div>
+  <div class="content card">
+    <h1>Dynamic Effects</h1>
+    <p>Scroll to experience smooth parallax transitions</p>
+  </div>
+</section>
+
+<!-- SECTION 3 -->
+<section class="section">
+  <div class="bg" style="background-image: url('https://picsum.photos/1920/1080?random=3')"></div>
+  <div class="overlay"></div>
+  <div class="content">
+    <h1>Responsive & Clean</h1>
+    <p>Perfect for portfolios or landing pages</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 DarkUI | Modern Design
+</footer>
+
+<script>
+// PARALLAX EFFECT
+window.addEventListener("scroll", function() {
+  const sections = document.querySelectorAll(".bg");
+  sections.forEach((bg) => {
+    let speed = 0.5;
+    let offset = window.pageYOffset;
+    bg.style.transform = "translateY(" + offset * speed + "px)";
+  });
+});
+
+// BUTTON CLICK EFFECT
+document.querySelector("button").addEventListener("click", () => {
+  window.scrollTo({
+    top: window.innerHeight,
+    behavior: "smooth"
+  });
+});
+</script>
+
+</body>
+</html>
