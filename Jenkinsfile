@@ -24,17 +24,18 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+stage('Deploy') {
             steps {
-                sh """
-                scp -o StrictHostKeyChecking=no index.html ${DEPLOY_SERVER}:/home/ec2-user/
+                sshagent(credentials: ['ec2-target-server-key']) {
+                    sh """
+                    scp -o StrictHostKeyChecking=no index.html ${DEPLOY_SERVER}:/home/ec2-user/
 
-                ssh -o StrictHostKeyChecking=no ${DEPLOY_SERVER} '
-                    sudo cp /home/ec2-user/index.html /var/www/html/index.html
-                    sudo systemctl restart httpd
-                '
-                """
+                    ssh -o StrictHostKeyChecking=no ${DEPLOY_SERVER} '
+                        sudo cp /home/ec2-user/index.html /var/www/html/index.html
+                        sudo systemctl restart httpd
+                    '
+                    """
+                }
             }
         }
-    }
 }
