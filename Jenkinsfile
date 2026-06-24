@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     environment {
-        DEPLOY_SERVER = "ec2-user@<EC2_2_IP>"
+        DEPLOY_SERVER = "ec2-user@172.31.23.4"
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/YOUR_USERNAME/jenkins-ec2-project.git'
+                checkout scm
             }
         }
 
